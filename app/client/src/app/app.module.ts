@@ -6,22 +6,24 @@ import { AppComponent } from './app.component';
 import { PropertyService } from './services/property.services';
 import { HttpClientModule } from '@angular/common/http';
 import { NgHttpLoaderModule } from 'ng-http-loader';
-import { MatIconModule, MatTabsModule, MatSnackBarModule} from '@angular/material';
+import {
+  MatIconModule,
+  MatTabsModule,
+  MatSnackBarModule,
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const appRoutes: Routes = [
   {
-      path        : 'change',
-      loadChildren: './property/property-module.module#PropertyModule'
+    path: 'change',
+    loadChildren: './property/property-module.module#PropertyModule',
   },
   {
-    path        : '**',
-    redirectTo: 'change'
-}
+    path: '**',
+    redirectTo: 'change',
+  },
 ];
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     MatIconModule,
@@ -30,9 +32,9 @@ const appRoutes: Routes = [
     MatTabsModule,
     HttpClientModule, // <============ (Perform http requests with this module)
     NgHttpLoaderModule, // <============
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [PropertyService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

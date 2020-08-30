@@ -88,10 +88,22 @@
   font-size: 13px;
   margin-top: 8px;
 }
-:host #login #login-form-wrapper #login-form form .remember-forgot-password .remember-me {
+:host
+  #login
+  #login-form-wrapper
+  #login-form
+  form
+  .remember-forgot-password
+  .remember-me {
   margin-bottom: 16px;
 }
-:host #login #login-form-wrapper #login-form form .remember-forgot-password .forgot-password {
+:host
+  #login
+  #login-form-wrapper
+  #login-form
+  form
+  .remember-forgot-password
+  .forgot-password {
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 16px;
@@ -117,7 +129,8 @@
   padding: 0 8px;
   z-index: 9999;
 }
-:host #login #login-form-wrapper #login-form .separator .text:before, :host #login #login-form-wrapper #login-form .separator .text:after {
+:host #login #login-form-wrapper #login-form .separator .text:before,
+:host #login #login-form-wrapper #login-form .separator .text:after {
   content: '';
   display: block;
   width: 30px;
@@ -131,13 +144,15 @@
 :host #login #login-form-wrapper #login-form .separator .text:after {
   left: 100%;
 }
-:host #login #login-form-wrapper #login-form button.google, :host #login #login-form-wrapper #login-form button.facebook {
+:host #login #login-form-wrapper #login-form button.google,
+:host #login #login-form-wrapper #login-form button.facebook {
   width: 70%;
   text-transform: none;
   color: #fff;
   font-size: 13px;
 }
-:host #login #login-form-wrapper #login-form button.google mat-icon, :host #login #login-form-wrapper #login-form button.facebook mat-icon {
+:host #login #login-form-wrapper #login-form button.google mat-icon,
+:host #login #login-form-wrapper #login-form button.facebook mat-icon {
   color: #fff;
   margin: 0 8px 0 0;
 }

@@ -1,20 +1,28 @@
- import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PropertyComponent } from './property/property.component';
 import { RouterModule } from '@angular/router';
-import { MatTabsModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatTableModule } from '@angular/material';
+import {
+  MatTabsModule,
+  MatFormFieldModule,
+  MatButtonModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatTableModule,
+} from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
   {
     path: 'property',
-    component: PropertyComponent
+    component: PropertyComponent,
   },
   {
-    path      : '**',
-    redirectTo: 'property'
-}
+    path: '**',
+    redirectTo: 'property',
+  },
 ];
 
 @NgModule({
@@ -28,8 +36,8 @@ const routes = [
     MatNativeDateModule,
     MatInputModule,
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
   ],
-  declarations: [PropertyComponent]
+  declarations: [PropertyComponent],
 })
-export class PropertyModule { }
+export class PropertyModule {}

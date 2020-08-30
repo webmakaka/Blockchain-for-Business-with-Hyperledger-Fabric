@@ -1,3 +1,3 @@
 import { PropertiesContract } from './property-contract';
 
-export const contracts: any[] = [ PropertiesContract ];
+export const contracts: any[] = [PropertiesContract];

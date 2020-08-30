@@ -1,5 +1,3 @@
-//SPDX-License-Identifier: Apache-2.0
-
 var query = require('./query.js');
 var invoke = require('./invoke');
 var changeOwner = require('./changeOwner');

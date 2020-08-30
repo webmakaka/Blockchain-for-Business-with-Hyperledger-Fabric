@@ -1,5 +1,3 @@
-//SPDX-License-Identifier: Apache-2.0
-
 // nodejs server setup
 
 // call the packages we need

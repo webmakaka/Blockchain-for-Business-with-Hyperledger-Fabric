@@ -5,7 +5,7 @@ import { tfsAnimations } from './animations';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: tfsAnimations
+  animations: tfsAnimations,
 })
 export class AppComponent {
   title = 'app';
