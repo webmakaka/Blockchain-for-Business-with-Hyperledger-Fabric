@@ -1,0 +1,158 @@
+:host .flex-container {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:host .row {
+  width: auto;
+}
+:host .flex-item {
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+}
+:host #login {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: url('/assets/images/backgrounds/dark-material-bg.jpg') no-repeat;
+  background-size: cover;
+}
+:host #login #login-intro {
+  padding: 128px;
+  color: white;
+}
+:host #login #login-intro .logo {
+  width: 128px;
+  margin-bottom: 32px;
+}
+:host #login #login-intro .title {
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+}
+:host #login #login-intro .description {
+  padding-top: 16px;
+  font-size: 14px;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.54);
+}
+:host #login #login-form-wrapper {
+  overflow: auto;
+
+  background: #fff;
+}
+:host #login #login-form-wrapper #login-form {
+  padding: 48px 48px 48px 48px;
+  min-height: 400px;
+  height: auto;
+  width: 700px;
+}
+
+:host #login #login-form-wrapper #login-form .logo {
+  width: 128px;
+  height: 128px;
+  line-height: 128px;
+  font-size: 86px;
+  font-weight: 500;
+  text-align: center;
+  margin: 32px auto;
+  color: #fff;
+  border-radius: 2px;
+}
+:host #login #login-form-wrapper #login-form .title {
+  font-size: 21px;
+}
+:host #login #login-form-wrapper #login-form .description {
+  padding-top: 8px;
+}
+:host #login #login-form-wrapper #login-form form {
+  width: 100%;
+  padding-top: 32px;
+}
+:host #login #login-form-wrapper #login-form form mat-form-field {
+  width: 100%;
+}
+:host #login #login-form-wrapper #login-form form mat-checkbox {
+  margin: 0;
+}
+:host #login #login-form-wrapper #login-form form .remember-forgot-password {
+  font-size: 13px;
+  margin-top: 8px;
+}
+:host #login #login-form-wrapper #login-form form .remember-forgot-password .remember-me {
+  margin-bottom: 16px;
+}
+:host #login #login-form-wrapper #login-form form .remember-forgot-password .forgot-password {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+:host #login #login-form-wrapper #login-form form .submit-button {
+  width: 100%;
+  margin: 16px auto;
+  display: block;
+}
+:host #login #login-form-wrapper #login-form .separator {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 24px auto;
+  position: relative;
+  overflow: hidden;
+  width: 100px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.54);
+}
+:host #login #login-form-wrapper #login-form .separator .text {
+  display: inline-flex;
+  position: relative;
+  padding: 0 8px;
+  z-index: 9999;
+}
+:host #login #login-form-wrapper #login-form .separator .text:before, :host #login #login-form-wrapper #login-form .separator .text:after {
+  content: '';
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+:host #login #login-form-wrapper #login-form .separator .text:before {
+  right: 100%;
+}
+:host #login #login-form-wrapper #login-form .separator .text:after {
+  left: 100%;
+}
+:host #login #login-form-wrapper #login-form button.google, :host #login #login-form-wrapper #login-form button.facebook {
+  width: 70%;
+  text-transform: none;
+  color: #fff;
+  font-size: 13px;
+}
+:host #login #login-form-wrapper #login-form button.google mat-icon, :host #login #login-form-wrapper #login-form button.facebook mat-icon {
+  color: #fff;
+  margin: 0 8px 0 0;
+}
+:host #login #login-form-wrapper #login-form button.google {
+  background-color: #d73d32;
+  margin-bottom: 8px;
+}
+:host #login #login-form-wrapper #login-form button.facebook {
+  background-color: #3f5c9a;
+}
+:host #login #login-form-wrapper #login-form .register {
+  margin: 32px auto 24px auto;
+
+  font-weight: 500;
+}
+:host #login #login-form-wrapper #login-form .register .text {
+  margin-right: 8px;
+}
