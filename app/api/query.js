@@ -14,7 +14,7 @@ module.exports = function (start, end) {
 
   // setup the fabric network
   var channel = fabric_client.newChannel('mychannel');
-  var peer = fabric_client.newPeer('grpc://52.187.123.234:7051');
+  var peer = fabric_client.newPeer('grpc://localhost:7051');
   channel.addPeer(peer);
 
   //

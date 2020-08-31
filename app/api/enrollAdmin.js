@@ -35,7 +35,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path })
     };
     // be sure to change the http to https when the CA is running TLS enabled
     fabric_ca_client = new Fabric_CA_Client(
-      'http://137.117.81.211:7054',
+      'http://localhost:7054',
       tlsOptions,
       'ca.example.com',
       crypto_suite

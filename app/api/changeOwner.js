@@ -25,10 +25,10 @@ module.exports = (function () {
         const channel = fabric_client.newChannel('mychannel');
         console.log('Created client side object to represent the channel');
         // -- peer instance to represent a peer on the channel
-        const peer = fabric_client.newPeer('grpc://52.187.123.234:7051');
+        const peer = fabric_client.newPeer('grpc://localhost:7051');
         console.log('Created client side object to represent the peer');
         // -- orderer instance to reprsent the channel's orderer
-        const orderer = fabric_client.newOrderer('grpc://52.187.123.234:7050');
+        const orderer = fabric_client.newOrderer('grpc://localhost:7050');
         console.log('Created client side object to represent the orderer');
 
         // This sample application uses a file based key value stores to hold
