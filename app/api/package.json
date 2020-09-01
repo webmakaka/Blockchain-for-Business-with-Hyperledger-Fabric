@@ -7,11 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
     "fabric-ca-client": "~2.2.2",
     "fabric-client": "~1.4.10",
-    "grpc": "^1.24.3",
-    "express": "latest",
-    "body-parser": "latest"
+    "fabric-network": "^2.2.2",
+    "grpc": "^1.24.3"
   },
   "keywords": [],
   "author": "",
