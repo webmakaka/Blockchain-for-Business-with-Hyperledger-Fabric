@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "body-parser": "latest",
+    "cors": "^2.8.5",
     "express": "latest",
     "fabric-ca-client": "~2.2.2",
     "fabric-client": "~1.4.10",

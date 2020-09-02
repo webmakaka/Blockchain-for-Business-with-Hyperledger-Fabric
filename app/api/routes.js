@@ -8,6 +8,9 @@ module.exports = function (app) {
     var startIndex = req.query.startIndex;
     var endIndex = req.query.endIndex;
 
+    // const startIndex = 'P100001';
+    // const endIndex = 'P100005';
+
     var data = query(startIndex, endIndex).then((data) => {
       if (!data) {
         return res.status(400).send({ error: 'not found' });

@@ -1,9 +1,5 @@
 'use strict';
 
-/*
- * Chaincode Invoke
- */
-
 const Fabric_Client = require('fabric-client');
 const path = require('path');
 const util = require('util');
