@@ -1,106 +1,75 @@
-'use strict';
-
 /*
- * Register and Enroll a user
+ * Copyright IBM Corp. All Rights Reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
  */
 
-var Fabric_Client = require('fabric-client');
-var Fabric_CA_Client = require('fabric-ca-client');
+'use strict';
 
-var path = require('path');
-var util = require('util');
-var os = require('os');
+const { Wallets } = require('fabric-network');
+const FabricCAServices = require('fabric-ca-client');
+const fs = require('fs');
+const path = require('path');
 
-//
-var fabric_client = new Fabric_Client();
-var fabric_ca_client = null;
-var admin_user = null;
-var member_user = null;
-var store_path = path.join(__dirname, 'hfc-key-store');
-console.log(' Store path:' + store_path);
+async function main() {
+    try {
+        // load the network configuration
+        const ccpPath = path.resolve(__dirname, '..', '..', 'test-network', 'organizations', 'peerOrganizations', 'org1.example.com', 'connection-org1.json');
+        const ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
 
-// create the key value store as defined in the fabric-client/config/default.json 'key-value-store' setting
-Fabric_Client.newDefaultKeyValueStore({ path: store_path })
-  .then((state_store) => {
-    // assign the store to the fabric client
-    fabric_client.setStateStore(state_store);
-    var crypto_suite = Fabric_Client.newCryptoSuite();
-    // use the same location for the state store (where the users' certificate are kept)
-    // and the crypto store (where the users' keys are kept)
-    var crypto_store = Fabric_Client.newCryptoKeyStore({ path: store_path });
-    crypto_suite.setCryptoKeyStore(crypto_store);
-    fabric_client.setCryptoSuite(crypto_suite);
-    var tlsOptions = {
-      trustedRoots: [],
-      verify: false,
-    };
-    // be sure to change the http to https when the CA is running TLS enabled
-    fabric_ca_client = new Fabric_CA_Client(
-      'http://localhost:7054',
-      null,
-      '',
-      crypto_suite
-    );
+        // Create a new CA client for interacting with the CA.
+        const caURL = ccp.certificateAuthorities['ca.org1.example.com'].url;
+        const ca = new FabricCAServices(caURL);
 
-    // first check to see if the admin is already enrolled
-    return fabric_client.getUserContext('admin', true);
-  })
-  .then((user_from_store) => {
-    if (user_from_store && user_from_store.isEnrolled()) {
-      console.log('Successfully loaded admin from persistence');
-      admin_user = user_from_store;
-    } else {
-      throw new Error('Failed to get admin.... run enrollAdmin.js');
+        // Create a new file system based wallet for managing identities.
+        const walletPath = path.join(process.cwd(), 'wallet');
+        const wallet = await Wallets.newFileSystemWallet(walletPath);
+        console.log(`Wallet path: ${walletPath}`);
+
+        // Check to see if we've already enrolled the user.
+        const userIdentity = await wallet.get('appUser');
+        if (userIdentity) {
+            console.log('An identity for the user "appUser" already exists in the wallet');
+            return;
+        }
+
+        // Check to see if we've already enrolled the admin user.
+        const adminIdentity = await wallet.get('admin');
+        if (!adminIdentity) {
+            console.log('An identity for the admin user "admin" does not exist in the wallet');
+            console.log('Run the enrollAdmin.js application before retrying');
+            return;
+        }
+
+        // build a user object for authenticating with the CA
+        const provider = wallet.getProviderRegistry().getProvider(adminIdentity.type);
+        const adminUser = await provider.getUserContext(adminIdentity, 'admin');
+
+        // Register the user, enroll the user, and import the new identity into the wallet.
+        const secret = await ca.register({
+            affiliation: 'org1.department1',
+            enrollmentID: 'appUser',
+            role: 'client'
+        }, adminUser);
+        const enrollment = await ca.enroll({
+            enrollmentID: 'appUser',
+            enrollmentSecret: secret
+        });
+        const x509Identity = {
+            credentials: {
+                certificate: enrollment.certificate,
+                privateKey: enrollment.key.toBytes(),
+            },
+            mspId: 'Org1MSP',
+            type: 'X.509',
+        };
+        await wallet.put('appUser', x509Identity);
+        console.log('Successfully registered and enrolled admin user "appUser" and imported it into the wallet');
+
+    } catch (error) {
+        console.error(`Failed to register user "appUser": ${error}`);
+        process.exit(1);
     }
+}
 
-    // at this point we should have the admin user
-    // first need to register the user with the CA server
-    return fabric_ca_client.register(
-      {
-        enrollmentID: 'user1',
-        affiliation: 'org1.department1',
-        role: 'client',
-      },
-      admin_user
-    );
-  })
-  .then((secret) => {
-    // next we need to enroll the user with CA server
-    console.log('Successfully registered user1 - secret:' + secret);
-
-    return fabric_ca_client.enroll({
-      enrollmentID: 'user1',
-      enrollmentSecret: secret,
-    });
-  })
-  .then((enrollment) => {
-    console.log('Successfully enrolled member user "user1" ');
-    return fabric_client.createUser({
-      username: 'user1',
-      mspid: 'Org1MSP',
-      cryptoContent: {
-        privateKeyPEM: enrollment.key.toBytes(),
-        signedCertPEM: enrollment.certificate,
-      },
-    });
-  })
-  .then((user) => {
-    member_user = user;
-
-    return fabric_client.setUserContext(member_user);
-  })
-  .then(() => {
-    console.log(
-      'User1 was successfully registered and enrolled and is ready to interact with the fabric network'
-    );
-  })
-  .catch((err) => {
-    console.error('Failed to register: ' + err);
-    if (err.toString().indexOf('Authorization') > -1) {
-      console.error(
-        'Authorization failures may be caused by having admin credentials from a previous CA instance.\n' +
-          'Try again after deleting the contents of the store directory ' +
-          store_path
-      );
-    }
-  });
+main();
