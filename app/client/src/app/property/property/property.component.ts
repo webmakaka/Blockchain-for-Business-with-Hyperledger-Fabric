@@ -72,9 +72,12 @@ export class PropertyComponent implements OnInit {
     this.rateService.getRates().subscribe(
       (res: any) => {
         if (res) {
-          const properties = JSON.parse(res);
+          // const properties = JSON.parse(res);
+          const properties = res;
+          console.log('properties');
           console.log(properties);
           this.allRates = properties['map']((property) => {
+            console.log(property);
             return property['Record'];
           });
           console.log(this.allRates);

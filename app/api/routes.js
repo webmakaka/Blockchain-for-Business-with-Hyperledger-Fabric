@@ -1,12 +1,12 @@
-var query = require('./query.js');
-var invoke = require('./invoke');
-var changeOwner = require('./changeOwner');
-var bodyParser = require('body-parser');
+const query = require('./query.js');
+const invoke = require('./invoke');
+const changeOwner = require('./changeOwner');
+const bodyParser = require('body-parser');
 
 module.exports = function (app) {
   app.get('/property', function (req, res) {
-    var startIndex = req.query.startIndex;
-    var endIndex = req.query.endIndex;
+    const startIndex = req.query.startIndex;
+    const endIndex = req.query.endIndex;
 
     // const startIndex = 'P100001';
     // const endIndex = 'P100005';

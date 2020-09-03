@@ -1,8 +1,8 @@
 # [Book, Nakul Shah] Blockchain for Business with Hyperledger Fabric: A complete guide to enterprise Blockchain implementation using Hyperledger Fabric [ENG, 2019]
 
-<br/>F
+<br/>
 
-# NOT WORKS!!!
+# NOT WORKS FOR NOW !!!
 
 ---
 
