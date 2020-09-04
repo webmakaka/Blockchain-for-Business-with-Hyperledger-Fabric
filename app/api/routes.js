@@ -37,10 +37,12 @@ module.exports = function (app) {
         data.value
       )
       .then((data) => {
+        console.log('data');
+        console.log(data);
+
         if (!data) {
           return res.status(400).send({ error: 'not found' });
         }
-
         return res.json({ result: 'added new property to ledger!' });
       });
   });
