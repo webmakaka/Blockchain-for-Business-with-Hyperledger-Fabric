@@ -4,9 +4,9 @@
 
 ## 2 brahcnes:
 
-Here is 2 branches.
+Here are 2 branches.
 
-- master with updated codes by me and works with hyperledger v2.2
+- master with updated codes by me. Works with hyperledger v2.2
 - orig - with original codes for v.1.4. I had some issue with starting hypeledger network. Need node.js v0 or v10. And possible i had some projects compilation errors.
 
 <br/>
