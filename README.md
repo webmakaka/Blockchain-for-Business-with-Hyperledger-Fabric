@@ -54,7 +54,7 @@ Here is 2 branches.
 
 ### I remove everything
 
-    $ cd midir -p ~/projects/dev/hyperledger/
+    $ mkdir -p ~/projects/dev/hyperledger/
     $ cd ~/projects/dev/hyperledger/
     $ sudo rm -rf *
 
@@ -419,7 +419,7 @@ And then update it:
 'nosorog'
 ```
 
-Some not so interesting samples from the book, you can find <a href="/books/blockchain/hyperledger/en/fabric/blockchain-for-business-with-hyperledger-fabric/">here</a>
+Some not so interesting samples from the book, you can find <a href="//matematika.org/books/blockchain/hyperledger/en/fabric/blockchain-for-business-with-hyperledger-fabric/">here</a>
 
 ---
 
