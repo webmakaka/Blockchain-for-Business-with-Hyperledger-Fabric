@@ -386,7 +386,7 @@ http://localhost:4200/
 
 <br/>
 
-You can add next data from emample:
+**You can add next data from example:**
 
 ```
 'P100003',
@@ -412,7 +412,7 @@ You can add next data from emample:
 
 <br/>
 
-And then update it:
+**And then update it:**
 
 ```
 'P100003'
