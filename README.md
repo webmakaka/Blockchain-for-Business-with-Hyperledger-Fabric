@@ -419,7 +419,7 @@ http://localhost:4200/
 'nosorog'
 ```
 
-Some not so interesting samples from the book, you can find <a href="//matematika.org/books/blockchain/hyperledger/en/fabric/blockchain-for-business-with-hyperledger-fabric/">here</a>
+Some not so interesting samples from the book, you can find <a href="//matematika.org/books/blockchain/hyperledger/fabric/blockchain-for-business-with-hyperledger-fabric/en/">here</a>
 
 ---
 
